@@ -35,14 +35,14 @@ jobs:
       - name: Test code
         id: run-test
         run: npm run test
-      - name: echo
-        run: echo ${{ steps.run-test.outcome }}
       - name: Upload test report
-        if: steps.run-test.outcome == 'failure'
+        if: failure() && steps.run-test.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
           path: test.json
+      - name: echo
+        run: echo ${{ steps.run-test.outcome }}
   build:
     needs: test
     runs-on: ubuntu-latest

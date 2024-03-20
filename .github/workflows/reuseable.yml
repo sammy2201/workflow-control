@@ -1,0 +1,8 @@
+name: Reusable
+on: ...
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echoing
+        run: echo "hulk smash"

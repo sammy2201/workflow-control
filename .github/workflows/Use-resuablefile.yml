@@ -70,7 +70,12 @@ jobs:
           path: dist
   deploy:
     needs: build
-    uses: ./.github/workflows/reuseable.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get reusable workflow
+        uses: actions/checkout@v3
+      - name: Run reusable workflow
+        uses: ./.github/workflows/reusable.yml
 
   report:
     needs: [lint, deploy]

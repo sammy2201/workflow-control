@@ -9,13 +9,13 @@ jobs:
         operation-system: [ubuntu-latest, windows-latest]
     runs-on: ${{matrix.operation-system}}
     steps:
-      - name: get code
+      - name: Get code
         uses: actions/checkout@v3
-      - name: Install nodejs
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{matrix.node-version}}
       - name: Install Dependencies
-        run: np ci
+        run: npm ci
       - name: Build project
         run: npm run build
